@@ -27,7 +27,7 @@ class UserController{
 
         var {email, name, password} = req.body
 
-        if(email == undefined){
+        if(email == undefined || email == '' || email == ' '){
             res.status(400)
             res.json({err: 'Email inválido!'})
             return
@@ -36,7 +36,7 @@ class UserController{
         var emailExists = await User.findEmail(email)
 
         if(emailExists){
-            res.status(406)
+            res.status(400)
             res.json({err: 'Email já cadastrado'})
             return
         }
@@ -82,7 +82,7 @@ class UserController{
                 res.send(result.err)
             }
         }else{
-            res.status(406)
+            res.status(404)
             res.send('Ocorreu um erro!')
         }
     }
