@@ -9,7 +9,7 @@ class UserController{
 
     async index(req,res){
         var users = await User.findAll()
-        res.json({users: users})
+        res.json(users)
     }
 
     async findUser(req,res){
@@ -17,9 +17,11 @@ class UserController{
 
         var user = await User.findById(id)
         if(user == undefined){
-            res.json({err: 'Não encontrado'})
+            res.status(404)
+            res.json({})
         }else{
-            res.json({user: user.name})
+            res.status(200)
+            res.json(user)
         }
     }
 
@@ -36,7 +38,7 @@ class UserController{
         var emailExists = await User.findEmail(email)
 
         if(emailExists){
-            res.status(400)
+            res.status(406)
             res.json({err: 'Email já cadastrado'})
             return
         }

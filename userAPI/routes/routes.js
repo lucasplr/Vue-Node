@@ -13,7 +13,7 @@ router.get('/users', AdminAuth, UserController.index)
 
 router.get('/users/:id', UserController.findUser)
 
-router.put('/user', UserController.edit)
+router.put('/user', AdminAuth,UserController.edit)
 
 router.delete('/user/:id', AdminAuth,UserController.delete)
 

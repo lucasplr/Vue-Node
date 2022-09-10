@@ -15,7 +15,7 @@
                     <td>{{user.name}}</td>
                     <td>{{user.email}}</td>
                     <td>{{process(user.role)}}</td>
-                    <button class="button is-success">Editar</button>  <button class="button is-danger" @click="showMod(user.id)">Deletar</button>
+                    <router-link :to="{name: 'edit', params: {id: user.id}}"><button class="button is-success">Editar</button></router-link>  <button class="button is-danger" @click="showMod(user.id)">Deletar</button>
                 </tr>
             </tbody>
         </table>
