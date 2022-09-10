@@ -17,12 +17,12 @@ module.exports = function(req,res,next){
                 next()
             }else{
                 res.status(403)
-                res.send('Você não está autenticado')
+                res.json({err: 'Você não está autorizado!'})
                 return
             }
         }catch(err){
             res.status(403)
-            res.send('Você não está autenticado')
+            res.json({err: 'Você não está autorizado'})
             return
         }
 }

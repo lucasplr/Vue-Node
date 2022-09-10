@@ -13,8 +13,8 @@
                 <p>Email</p>
                 <input for='email' type="email" name="" placeholder="example@email.com" class="input" v-model="email">
                 <p>Senha</p>
-                <input type="text" name=""  placeholder="*******" class="input" v-model="password">
-                <button class="button" @click="login">Cadastrar</button>
+                <input type="password" name=""  placeholder="*******" class="input" v-model="password">
+                <button class="button" @click="login">Login</button>
         </div>
         </div>
     </div>
@@ -41,7 +41,7 @@ export default{
             }).then(res => {
                 localStorage.setItem('token', res.data.token)
                 this.$router.push({name: 'home'})
-                console.log(res)
+
             }).catch(err => {
                 var msgErro = err.response.data.err
                 this.error = msgErro

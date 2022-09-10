@@ -3,6 +3,32 @@ import HomeView from '../views/HomeView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import LoginView from '../views/LoginView.vue'
 import UserView from '../views/UserView.vue'
+import axios from 'axios'
+
+
+function AdminAuth(to, from, next){
+  if(localStorage.getItem('token') != undefined){
+
+    var req = {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      }
+    }
+
+    console.log(req)
+
+    axios.post('http://localhost:8686/validate',{}, req).then(res => {
+      console.log(res)
+      next()
+    }).catch(err => {
+      console.log(err.response)
+      next('/login')
+    })
+  }else{
+    next('/login')
+  }
+}
+
 
 const routes = [
   {
@@ -32,6 +58,12 @@ const routes = [
     path: '/panel',
     name: 'panel',
     component: UserView
+  },
+  {
+    path: '/admin/users',
+    name: 'users',
+    component: UserView,
+    beforeEnter: AdminAuth
   }
 ]
 

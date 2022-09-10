@@ -132,11 +132,14 @@ class UserController{
 
                 res.status(200)
                 res.json({token: token})
+            }else{
+                res.status(406)
+                res.json({err: "Senha incorreta"})
             }
 
         }else{
             res.status(406)
-            res.json({status: false})
+            res.json({status: false, err: "O usuário não existe!"})
         }
     }
 }
