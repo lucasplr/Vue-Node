@@ -9,7 +9,7 @@ class UserController{
 
     async index(req,res){
         var users = await User.findAll()
-        res.json(users)
+        res.json({users: users})
     }
 
     async findUser(req,res){
