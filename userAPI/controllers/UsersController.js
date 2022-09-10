@@ -69,7 +69,7 @@ class UserController{
 
     async delete(req,res){
 
-        var id = req.body.id
+        var id = req.params.id
 
         var result = await User.delete(id)
 

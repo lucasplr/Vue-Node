@@ -15,7 +15,7 @@ router.get('/users/:id', UserController.findUser)
 
 router.put('/user', UserController.edit)
 
-router.delete('/user', UserController.delete)
+router.delete('/user/:id', AdminAuth,UserController.delete)
 
 router.post('/recoverpassword', UserController.recoverPassword)
 

@@ -15,7 +15,7 @@
                 <p>Email</p>
                 <input for='email' type="email" name="" placeholder="example@email.com" class="input" v-model="email">
                 <p>Senha</p>
-                <input type="text" name=""  placeholder="*******" class="input" v-model="password">
+                <input type="password" name=""  placeholder="*******" class="input" v-model="password">
                 <button class="button" @click="register">Cadastrar</button>
         </div>
         </div>
